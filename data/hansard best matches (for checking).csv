@@ -1,0 +1,109 @@
+hansard_ward,bestMatch,bestMatchId,bestScore,others,bestLGD,bestCode,hansard_2006_coverage
+Cam Hill,Carn Hill,282,0.7777777777777778,Cavehill|Craigy Hill,Derry,95MM06,61.11
+Churchlands,Churchland,218,0.9090909090909091,Northland|Sunnylands,Coleraine,95JJ06,37.64
+Ardglass,Ardglass,307,1,Drumglass|Poleglass,Down,95NN01,44.81
+Ardoyne,Ardoyne,123,1,Ardboe|Armoy,Belfast,95GG02,0.87
+Armoy,Armoy,451,1,Moy|Ardoyne,Moyle,95UU01,100
+Audley's Acre,Audley's Acre,308,1,Abbey Park|Cullybackey,Down,95NN02,66.9
+Augher,Augher,331,1,Banagher|Clogher,Dungannon,95OO02,94.12
+Ballee,Ballee,68,1,Balloo|Ballykeel,Ballymena,95DD04,35.59
+Ballinamallard,Ballinamallard,352,1,Ballynashallog|Ballymaglave,Fermanagh,95PP01,95.65
+Ballybay,Ballybay,253,1,Ballybot|Ballysally,Craigavon,95LL03,65.7
+Ballybot,Ballybot,467,1,Ballymote|Ballybay,Newry and Mourn,95VV02,56.52
+Ballycolman,Ballycolman,568,1,Ballycrochan|Ballygowan,Strabane,95ZZ02,75.68
+Ballykeel,Ballykeel,69,1,Ballykelly|Ballee,Ballymena,95DD05,78.92
+Ballymacarrett,Ballymacarrett,125,1,Ballycarry|Ballymacash,Belfast,95GG04,52.05
+Ballymote,Ballymote,310,1,Ballybot|Ballyholme,Down,95NN04,47.26
+Ballynafeigh,Ballynafeigh,126,1,Ballymaguigan|Ballycraigy,Belfast,95GG05,46.59
+Ballyoran,Ballyoran,254,1,Ballyloran|Ballygowan,Craigavon,95LL04,69.75
+Ballysaggart,Ballysaggart,334,1,Ballymaglave|Ballymaguigan,Dungannon,95OO05,39.61
+Ballysally,Ballysally,215,1,Ballykelly|Ballysillan,Coleraine,95JJ03,49.5
+Ballysillan,Ballysillan,127,1,Ballysally|Ballycolman,Belfast,95GG06,21.25
+Ballywalter,Ballywalter,22,1,Ballyrainey|Ballyward,Ards,95BB03,89.95
+Blackstaff,Blackstaff,131,1,Blackhead|Blackcave,Belfast,95GG10,65.66
+Bonamargy and Rathlin,Bonamargy and Rathlin,453,1,Donaghadee North|Magheralin,Moyle,95UU03,77.78
+Botanic,Botanic,133,1,Atlantic|Blaris,Belfast,95GG12,54.62
+Bushmills,Bushmills,454,1,Clogh Mills|Sion Mills,Moyle,95UU04,100
+Camlough,Camlough,471,1,Carnlough|Killough,Newry and Mourn,95VV06,18.27
+Camowen,Camowen,547,1,Carnmoney|Carnmoon,Omagh,95YY02,77.56
+Castlecaulfield,Castlecaulfield,337,1,Castlecoole|Castleview,Dungannon,95OO08,36.97
+Castleview,Castleview,134,1,Castlerock|Castlederg,Belfast,95GG13,21.85
+Cathedral,Cathedral,313,1,Maghera|Magheralin,Down,95NN07,35.45
+Cliftonville,Cliftonville,138,1,Woodville|Antiville,Belfast,95GG17,1.28
+Clogher,Clogher,338,1,Cloughfern|Killyclogher,Dungannon,95OO09,71.79
+Clonard,Clonard,139,1,Donard|Coolnagard,Belfast,95GG18,42.59
+Collin Glen,Collin Glen,410,1,Collinbridge|Millisle,Lisburn,95SS06,13.98
+Coole,Coole,507,1,Toome|Coolessan,Newtownabbey,95WW12,54.97
+Coolessan,Coolessan,392,1,Lissan|Coole,Limavady,95RR03,62.5
+Corcrain,Corcrain,258,1,Crumlin|Crumlin,Craigavon,95LL08,52.31
+Creggan,Creggan,473,1,Cregagh|Creggan South,Newry and Mourn,95VV08,17.51
+Crevagh,Crevagh,288,1,Cregagh|Garvagh,Derry,95MM12,80.3
+Cross Glebe,Cross Glebe,219,1,Crossmaglen|Crossgar,Coleraine,95JJ07,45.37
+Crossmaglen,Crossmaglen,474,1,Cross Glebe|Crossgar,Newry and Mourn,95VV09,23.31
+Crumlin,Crumlin,6,1,Crumlin|Drumquin,Antrim,95AA06,20.53
+Culmore,Culmore,289,1,Dunmore|Kilmore,Derry,95MM13,29.26
+Daisy Hill,Daisy hill,475,1,Craigy Hill|Rich Hill,Newry and Mourn,95VV10,28.06
+Dalriada,Dalriada,456,1,Clady|Carnany,Moyle,95UU06,37.82
+Drumalane,Drumalane,479,1,Drumglass|Drumanaway,Newry and Mourn,95VV14,40.21
+Drumragh,Drumragh,554,1,Drumgask|Drumnamoe,Omagh,95YY09,77.7
+Dunanney,Dunanney,509,1,Drumanaway|Dunminning,Newtownabbey,95WW14,100
+Duncairn,Duncairn,141,1,Glencairn|Dunnamore,Belfast,95GG20,17.95
+Dungiven,Dungiven,393,1,Dunminning|Duncairn,Limavady,95RR04,62.86
+Dunseverick,Dunseverick,457,1,Castlerock|University,Moyle,95UU07,65.96
+East,East,572,1,West|Keady,Strabane,95ZZ06,75.88
+Falls,Falls,142,1,Kells|Mallusk,Belfast,95GG21,34.94
+Feeny,Feeny,395,1,Demesne|Glenavy,Limavady,95RR06,62.66
+Fivemiletown,Fivemiletown,345,1,Irvinestown|Randalstown,Dungannon,95OO16,88.19
+Glack,Glack,397,1,Blackhead|Gilnahirk,Limavady,95RR08,62.4
+Glencairn,Glencairn,147,1,Duncairn|Glencolin,Belfast,95GG26,30.83
+Glentaisie,Glentaisie,462,1,Glencairn|Glenravel,Moyle,95UU12,76.71
+Gortalowry,Gortalowry,238,1,Portaferry|Gortalee,Cookstown,95KK04,37.45
+Harryville,Harryville,82,1,Cherryvalley|Antiville,Ballymena,95DD18,90.48
+Highfield,Highfield,149,1,Hopefield|Saintfield,Belfast,95GG28,22.94
+Irvinestown,Irvinestown,364,1,Brownstown|Waringstown,Fermanagh,95PP13,95.92
+Island,Island,150,1,Westland|Lisbane,Belfast,95GG29,71.43
+Kesh Ederney and Lack,Kesh Ederney and Lack,365,1,Belleek and Boa|Boho Cleenish and Letterbreen,Fermanagh,95PP14,95.8
+Killough,Killough,320,1,Murlough|Camlough,Down,95NN14,29.5
+Killyclogher,Killyclogher,559,1,Killylea|Killycrot,Omagh,95YY14,77.64
+Killymeal,Killymeal,347,1,Killylea|Killyman,Dungannon,95OO18,49.59
+Killymoon,Killymoon,240,1,Killyman|Killycrot,Cookstown,95KK06,27.71
+Kilwee,Kilwee,420,1,Killeen|Kilrea,Lisburn,95SS16,37.96
+Kinbane,Kinbane,463,1,Lisbane|Kilfennan,Moyle,95UU13,43.4
+Kircubbin,Kircubbin,34,1,Killycomain|Crumlin,Ards,95BB15,97.92
+Legoniel,Legoniel,153,1,Lower Braniel|Derrygonnelly,Belfast,95GG32,1.51
+Lisanelly,Lisanelly,560,1,Lisbane|Lisbellaw,Omagh,95YY15,77.74
+Lisnarrick,Lisnarrick,367,1,Lisnacree|Lisnagarvey,Fermanagh,95PP16,95.51
+Moat,Moat,84,1,Fort|Moy,Ballymena,95DD20,25.83
+Moss-side and Moyarget,Moss-side and Moyarget,465,1,Ballyhoe and Corkey|Island Magee,Moyle,95UU15,41.82
+Moygashel,Moygashel,349,1,Mossley|Mount Sandel,Dungannon,95OO20,44.53
+Mullaghmore,Mullaghmore,350,1,Donaghmore|Donaghmore,Dungannon,95OO21,41.22
+New Lodge,New Lodge,156,1,New Buildings|Newbuildings,Belfast,95GG35,18.23
+Newtownhamilton,Newtownhamilton,487,1,Newtownsaville|Newtownbutler,Newry and Mourn,95VV22,21.35
+North,North,576,1,Fort|South,Strabane,95ZZ10,75.63
+Oldtown,Oldtown,245,1,Monkstown|Jordanstown,Cookstown,95KK11,62.35
+Poleglass,Poleglass,430,1,Ardglass|Drumglass,Lisburn,95SS26,24.16
+Portaferry,Portaferry,39,1,Gortalowry|Portstewart,Ards,95BB20,83.56
+Portavogie,Portavogie,40,1,Portaferry|Gortalee,Ards,95BB21,83.56
+Quoile,Quoile,324,1,Quilly|Coole,Down,95NN18,56.21
+Shaftesbury,Shaftesbury,160,1,Crawfordsburn|Whitespots,Belfast,95GG39,46.26
+Shankill,Shankill,161,1,Stranmillis|Ahoghill,Belfast,95GG40,29.89
+Shantallow East,Shantallow East,300,1,Shantallow West|Shankill,Derry,95MM24,61.47
+Shantallow West,Shantallow West,301,1,Shantallow East|Banbridge West,Derry,95MM25,61.26
+Sion Mills,Sion Mills,578,1,Clogh Mills|Stranmillis,Strabane,95ZZ12,75.6
+South,South,580,1,Route|North,Strabane,95ZZ14,75.82
+Springtown,Springtown,302,1,Waringstown|Ebrington,Derry,95MM26,80.08
+St Mary's,St Mary's,492,1,St Patrick's|Stranmillis,Newry and Mourn,95VV27,50.65
+St Patrick's,St Patrick's,493,1,Seapatrick|St Mary's,Newry and Mourn,95VV28,29.89
+Strangford,Strangford,328,1,Springfarm|Strand,Down,95NN22,74.8
+The Highlands,The Highlands,403,1,The Diamond|Greenisland,Limavady,95RR14,62.26
+The Mount,The Mount,165,1,The Cut|Beechmount,Belfast,95GG44,78.84
+Trillick,Trillick,566,1,Fortwilliam|Stranmillis,Omagh,95YY21,95.65
+Twinbrook,Twinbrook,433,1,Ladybrook|Bessbrook,Lisburn,95SS29,36.76
+Upper Glenshane,Upper Glenshane,404,1,Lower Glenshane|Portglenone,Limavady,95RR15,62.72
+Upper Malone,Upper Malone,166,1,Upper Braniel|Upper Glenshane,Belfast,95GG45,23.38
+Valley,Valley,450,1,Valley|Ballee,Magherafelt,95TT16,41.29
+Water Works,Water Works,168,1,Whiterock|Waterside,Belfast,95GG47,23.67
+West,West,582,1,Westland|Forest,Strabane,95ZZ16,75.65
+Whitehouse,Whitehouse,520,1,Whitespots|Whiterock,Newtownabbey,95WW25,100
+Woodstock,Woodstock,171,1,Jordanstown|Whiterock,Belfast,95GG50,59.38
+Woodvale,Woodvale,172,1,Woodville|Woodburn,Belfast,95GG51,27.37
