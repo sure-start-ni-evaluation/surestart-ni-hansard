@@ -8,7 +8,7 @@ Read in primary data file
 
 ```{r}
 hansard_2006_df <- 
-    'data\sure start coverage (hansard 2006) (checked).csv' %>%
+    'data/sure start coverage (hansard 2006) (checked).csv' %>%
     read_csv()
 
 ```
@@ -16,7 +16,7 @@ hansard_2006_df <-
 
 ```{r}
 hansard_2006_df %>% summary 
-hansard_2006_df$ward_cover %>% 
+hansard_2006_df$hansard_2006_coverage %>% 
     quantile(seq(0, 1, 0.1))
 ```
 
@@ -28,7 +28,7 @@ We have seperate repo that collect historical Sure Start information from 2009. 
 
 ```{r download}
 ss_2009_url <- 
-    'https://github.com/sure-start-ni-evaluation/sure-start-historical-website/blob/main/data/national%20archive%20to%20nimdm%20wards%20(checked).csv'
+    'https://raw.githubusercontent.com/sure-start-ni-evaluation/sure-start-historical-website/refs/heads/main/data/national%20archive%20to%20nimdm%20wards%20(checked).csv'
 
 ss_2009_df <- 
     ss_2009_url %>% read_csv()
@@ -44,12 +44,19 @@ hansard_2006_df <- hansard_2006_df %>% mutate(ss2006 = T)
 
 full_join_df <-
     hansard_2006_df %>%
-    full_join(ss_2009_df, by = c())
+    full_join(ss_2009_df, by = 'bestCode')
 
-full_join_df %>%
-    filter(!(ss2006 & ss2009))
+full_join_df %>% summary
 
+full_join_df %>% 
+  filter(is.na(ss2009))
 ```
+
+Only 1 area in the 2006 list were not in the 2009 list (Camlough). Camlough (in Amagh) appears instead of Carnlough (in Antrim) by 2011. This is due to a data entry error in the 2009 data that was correct later. The responsible Sure Start is South Amagh Sure Start.
+
+
+
+
 
 
 
@@ -64,8 +71,8 @@ nimdm2005_df <-
       readxl::read_xls(sheet = 2)
 
 nimdm2001_df <-
-    'data/raw/nimdm2001.xls' %>%
-      readxl::read_xls(sheet = 2)
+    'data/raw/nimdm2001.xlsx' %>%
+      readxl::read_xlsx(sheet = 2)
 
 ```
 
@@ -73,19 +80,19 @@ nimdm2001_df <-
 
 nimdm2005_df <-
     nimdm2005_df %>%
-    rename(
-        mdm_score_2005 = xxx,
-        ward_nm = xxx,
-        lgd_nm = xx,
-        ward_cd = xxx
+    transmute(
+        mdm_score_2005 = `MDM Score`,
+        ward_nm = `WARD NAME` %>% tolower,
+        lgd_nm = `LGD CODE` %>% tolower,
+        ward_cd = `WARD CODE`
     )
 
 nimdm2001_df <-
     nimdm2001_df %>%
-    rename(
-        mdm_score_2001 = XX,
-        ward_nm = xxx,
-        lgd_nm = xxx
+    transmute(
+        mdm_score_2001 = `Multiple Deprivation Measure Score`,
+        ward_nm = `Ward Name` %>% tolower,
+        lgd_nm = `LGD Name` %>% tolower
     )    
 
 ## there may be some duplicated in the join
@@ -96,15 +103,15 @@ joined_hansard_df <-
         nimdm2001_df
     ) %>%
     left_join(
-        hansard_2006_df, by = c(ward_cd = xxx)
-    )  
+        hansard_2006_df, by = c(ward_cd = 'bestCode')
+    )
 
 
 ## replace NAs
 joined_hansard_df <-
  joined_hansard_df %>% 
  replace_na(
-    list(cover = 1)
+    list(hansard_2006_coverage = 1)
  )
 
 ```
@@ -115,8 +122,8 @@ Let's look at plots of coverage by nimdm
 ```{r nimdm2001 plot}
 
 joined_hansard_df %>%
-    ggplot(aes(x = mdm_score_2001, y = cover)) +
-    geom_points()
+    ggplot(aes(x = mdm_score_2005, y = hansard_2006_coverage)) +
+    geom_point()
 
 ```
 
