@@ -1,0 +1,123 @@
+# Exploratory analysis of the data
+
+```{r}
+library(tidyverse)
+```
+
+Read in primary data file
+
+```{r}
+hansard_2006_df <- 
+    'data\sure start coverage (hansard 2006) (checked).csv' %>%
+    read_csv()
+
+```
+## Univariate analysis
+
+```{r}
+hansard_2006_df %>% summary 
+hansard_2006_df$ward_cover %>% 
+    quantile(seq(0, 1, 0.1))
+```
+
+
+
+## Checking against 2009 historical data 
+
+We have seperate repo that collect historical Sure Start information from 2009. We can directly down the data and see whether all wards are covered.
+
+```{r download}
+ss_2009_url <- 
+    'https://github.com/sure-start-ni-evaluation/sure-start-historical-website/blob/main/data/national%20archive%20to%20nimdm%20wards%20(checked).csv'
+
+ss_2009_df <- 
+    ss_2009_url %>% read_csv()
+
+```
+
+We can do a full join of the data and see which areas are in both lists 
+
+```{r set-analysis}
+
+ss_2009_df <- ss_2009_df %>% mutate(ss2009 = T)
+hansard_2006_df <- hansard_2006_df %>% mutate(ss2006 = T)
+
+full_join_df <-
+    hansard_2006_df %>%
+    full_join(ss_2009_df, by = c())
+
+full_join_df %>%
+    filter(!(ss2006 & ss2009))
+
+```
+
+
+
+## Relationship with multiple deprivation index 
+
+The earliest index of multiple deprivation in NI is from 2001 ([NIMDM 2001](https://www.nisra.gov.uk/publications/northern-ireland-multiple-deprivation-measure-2001-nimdm2001)). The NIMD 2005 was used to decided the expansion of Sure Start.
+
+```{r read in NIMDM}
+
+nimdm2005_df <-
+    'data/raw/NIMDM_2010_Results_Ward_0.xls' %>%
+      readxl::read_xls(sheet = 2)
+
+nimdm2001_df <-
+    'data/raw/nimdm2001.xls' %>%
+      readxl::read_xls(sheet = 2)
+
+```
+
+```{r joindata}
+
+nimdm2005_df <-
+    nimdm2005_df %>%
+    rename(
+        mdm_score_2005 = xxx,
+        ward_nm = xxx,
+        lgd_nm = xx,
+        ward_cd = xxx
+    )
+
+nimdm2001_df <-
+    nimdm2001_df %>%
+    rename(
+        mdm_score_2001 = XX,
+        ward_nm = xxx,
+        lgd_nm = xxx
+    )    
+
+## there may be some duplicated in the join
+
+joined_hansard_df <-
+    nimdm2005_df %>%
+    left_join(
+        nimdm2001_df
+    ) %>%
+    left_join(
+        hansard_2006_df, by = c(ward_cd = xxx)
+    )  
+
+
+## replace NAs
+joined_hansard_df <-
+ joined_hansard_df %>% 
+ replace_na(
+    list(cover = 1)
+ )
+
+```
+
+
+Let's look at plots of coverage by nimdm 
+
+```{r nimdm2001 plot}
+
+joined_hansard_df %>%
+    ggplot(aes(x = mdm_score_2001, y = cover)) +
+    geom_points()
+
+```
+
+
