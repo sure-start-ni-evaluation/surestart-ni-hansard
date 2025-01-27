@@ -76,16 +76,9 @@ nimdm2001_df <-
 
 ```
 
-```{r joindata}
+### Check and join 2001 (matches only)
 
-nimdm2005_df <-
-    nimdm2005_df %>%
-    transmute(
-        mdm_score_2005 = `MDM Score`,
-        ward_nm = `WARD NAME` %>% tolower,
-        lgd_nm = `LGD CODE` %>% tolower,
-        ward_cd = `WARD CODE`
-    )
+```{r joindata_2001}
 
 nimdm2001_df <-
     nimdm2001_df %>%
@@ -95,36 +88,39 @@ nimdm2001_df <-
         lgd_nm = `LGD Name` %>% tolower
     )    
 
-## there may be some duplicated in the join
+## remove ducpliated ward nms (prevent matchign on just first)
 
-joined_hansard_df <-
-    nimdm2005_df %>%
+nimdm2001_df <- 
+    nimdm2001_df[!(nimdm2001_df$ward_nm %>% duplicated),]
+
+
+
+joined_hansard_df_2001 <-
+    nimdm2001_df %>% 
     left_join(
-        nimdm2001_df
-    ) %>%
-    left_join(
-        hansard_2006_df, by = c(ward_cd = 'bestCode')
-    )
+        hansard_2006_df %>%
+        mutate(bestMatch_lower = tolower(bestMatch)), 
+        by = c(ward_nm = 'bestMatch_lower')
+    ) 
 
 
 ## replace NAs
-joined_hansard_df <-
- joined_hansard_df %>% 
+joined_hansard_df_2001 %>% summary # 97 were found
+joined_hansard_df_2001 <-
+ joined_hansard_df_2001 %>% 
  replace_na(
-    list(hansard_2006_coverage = 1)
+    list(hansard_2006_coverage = 0)
  )
 
 ```
-
-
 Let's look at plots of coverage by nimdm 
 
 ```{r nimdm2001 plot}
 
-joined_hansard_df %>%
-    ggplot(aes(x = mdm_score_2005, y = hansard_2006_coverage)) +
-    geom_point()
+joined_hansard_df_2001 %>%
+    ggplot(aes(x = mdm_score_2001, y = hansard_2006_coverage)) +
+    geom_point(position = position_jitter(height = 3)) # jitter to improve read
 
 ```
 
-
+Conclusion: There is no real rhyme or reason linking mdm score/rank to SureStart 2006 areas.
