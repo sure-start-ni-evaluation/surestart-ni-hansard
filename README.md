@@ -25,3 +25,4 @@ A manual check was completed to spot errors (e.g. there's two Crumlin in Norther
 - Camhill is almost certainly a misspelling of Carn Hill
 - Churchlands is a misspelling
 - Crumlin refers to Crumlin in Belfast (based on later data from the Sure Start website)
+- Valley refer to Valley in Newtownabbey (based on later data)

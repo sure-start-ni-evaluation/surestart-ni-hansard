@@ -1,0 +1,126 @@
+# Exploratory analysis of the data
+
+```{r}
+library(tidyverse)
+```
+
+Read in primary data file
+
+```{r}
+hansard_2006_df <- 
+    'data/sure start coverage (hansard 2006) (checked).csv' %>%
+    read_csv()
+
+```
+## Univariate analysis
+
+```{r}
+hansard_2006_df %>% summary 
+hansard_2006_df$hansard_2006_coverage %>% 
+    quantile(seq(0, 1, 0.1))
+```
+
+
+
+## Checking against 2009 historical data 
+
+We have seperate repo that collect historical Sure Start information from 2009. We can directly down the data and see whether all wards are covered.
+
+```{r download}
+ss_2009_url <- 
+    'https://raw.githubusercontent.com/sure-start-ni-evaluation/sure-start-historical-website/refs/heads/main/data/national%20archive%20to%20nimdm%20wards%20(checked).csv'
+
+ss_2009_df <- 
+    ss_2009_url %>% read_csv()
+
+```
+
+We can do a full join of the data and see which areas are in both lists 
+
+```{r set-analysis}
+
+ss_2009_df <- ss_2009_df %>% mutate(ss2009 = T)
+hansard_2006_df <- hansard_2006_df %>% mutate(ss2006 = T)
+
+full_join_df <-
+    hansard_2006_df %>%
+    full_join(ss_2009_df, by = 'bestCode')
+
+full_join_df %>% summary
+
+full_join_df %>% 
+  filter(is.na(ss2009))
+```
+
+Only 1 area in the 2006 list were not in the 2009 list (Camlough). Camlough (in Amagh) appears instead of Carnlough (in Antrim) by 2011. This is due to a data entry error in the 2009 data that was correct later. The responsible Sure Start is South Amagh Sure Start.
+
+
+
+
+
+
+
+## Relationship with multiple deprivation index 
+
+The earliest index of multiple deprivation in NI is from 2001 ([NIMDM 2001](https://www.nisra.gov.uk/publications/northern-ireland-multiple-deprivation-measure-2001-nimdm2001)). The NIMD 2005 was used to decided the expansion of Sure Start.
+
+```{r read in NIMDM}
+
+nimdm2005_df <-
+    'data/raw/NIMDM_2010_Results_Ward_0.xls' %>%
+      readxl::read_xls(sheet = 2)
+
+nimdm2001_df <-
+    'data/raw/nimdm2001.xlsx' %>%
+      readxl::read_xlsx(sheet = 2)
+
+```
+
+### Check and join 2001 (matches only)
+
+```{r joindata_2001}
+
+nimdm2001_df <-
+    nimdm2001_df %>%
+    transmute(
+        mdm_score_2001 = `Multiple Deprivation Measure Score`,
+        ward_nm = `Ward Name` %>% tolower,
+        lgd_nm = `LGD Name` %>% tolower
+    )    
+
+## remove ducpliated ward nms (prevent matchign on just first)
+
+nimdm2001_df <- 
+    nimdm2001_df[!(nimdm2001_df$ward_nm %>% duplicated),]
+
+
+
+joined_hansard_df_2001 <-
+    nimdm2001_df %>% 
+    left_join(
+        hansard_2006_df %>%
+        mutate(bestMatch_lower = tolower(bestMatch)), 
+        by = c(ward_nm = 'bestMatch_lower')
+    ) 
+
+
+## replace NAs
+joined_hansard_df_2001 %>% summary # 97 were found
+joined_hansard_df_2001 <-
+ joined_hansard_df_2001 %>% 
+ replace_na(
+    list(hansard_2006_coverage = 0)
+ )
+
+```
+Let's look at plots of coverage by nimdm 
+
+```{r nimdm2001 plot}
+
+joined_hansard_df_2001 %>%
+    ggplot(aes(x = mdm_score_2001, y = hansard_2006_coverage)) +
+    geom_point(position = position_jitter(height = 3)) # jitter to improve read
+
+```
+
+Conclusion: There is no real rhyme or reason linking mdm score/rank to SureStart 2006 areas.
